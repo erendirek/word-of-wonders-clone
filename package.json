@@ -1,5 +1,5 @@
 {
-  "name": "pixiejs_test",
+  "name": "playable-factory-case-study",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,8 @@
   "dependencies": {
     "gsap": "^3.12.5",
     "pixi.js": "^8.5.2",
-    "pixiejs_test": "file:"
+    "pixiejs_test": "file:",
+    "playable-factory-case-study": "file:"
   },
   "devDependencies": {
     "@types/gsap": "^1.20.2",
