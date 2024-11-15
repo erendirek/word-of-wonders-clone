@@ -4,7 +4,7 @@ export default class Question
 {
     question_data: QuestionData;
     
-    letters: Set<String> = new Set();
+    letters: Set<string> = new Set();
 
     constructor(question_data: QuestionData)
     {

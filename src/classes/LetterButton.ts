@@ -1,19 +1,16 @@
 import { Container, Graphics, Text } from "pixi.js";
 
-export default class CircleLetter extends Container
+export default class LetterButton extends Container
 {
     letter: string;
-    w: number;
-    h: number;
+    m_scale: number;
     
-    constructor(letter: string, width: number, height: number) 
+    constructor(letter: string, scale: number) 
     {
         super();
 
         this.letter = letter;
-        
-        this.w = width;
-        this.h = height;
+        this.m_scale = scale;
 
         this.start();
     }
@@ -24,7 +21,7 @@ export default class CircleLetter extends Container
             text: this.letter
         });
 
-        letter.scale.set(1)
+        letter.scale.set(this.m_scale);
 
         this.addChild(letter);
 
