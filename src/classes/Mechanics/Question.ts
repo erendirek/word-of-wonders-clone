@@ -1,4 +1,4 @@
-import QuestionData from "../types/QuestionData";
+import QuestionData from "../../types/QuestionData";
 
 export default class Question
 {

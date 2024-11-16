@@ -1,4 +1,5 @@
 
+// Verilen listeyi rastgele karistiran fonksiyon.
 export function shuffle(list: Array<any>)
 {
     for (let i = 0; i < list.length; i++) 

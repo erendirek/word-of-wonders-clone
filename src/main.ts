@@ -1,13 +1,15 @@
 import * as PIXI from "pixi.js";
-import { Application, Assets, Sprite } from "pixi.js";
+import { Application } from "pixi.js";
 import Game from "./game";
 import load_assets from "./assets";
 import { gsap } from "gsap";
 import { PixiPlugin } from "gsap/PixiPlugin";
+import GameManager from "./classes/Managers/GameManager";
 
 export const GAME_WIDTH = 480;
 export const GAME_HEIGHT = 800;
 
+// Creates pixi Application
 export const app = new Application();
 
 gsap.registerPlugin(PixiPlugin);
@@ -26,7 +28,11 @@ async function main()
         app.ticker.update();
     });
 
+    // Assetleri yukler.
     await load_assets();
+
+    // GameManager sinifindan singleton objesi olusturur.
+    GameManager.start_game_manager();
 
     app.stage.addChild(new Game());
 

@@ -1,26 +1,39 @@
 {
     "bundles":[
-       {
-          "name":"load-screen",
-          "assets":[
-             {
-                "alias":"background",
-                "src":"ingame-assets/bg.png"
-             }
-          ]
-       },
-       {
-         "name":"in-game",
-         "assets":[
-            {
-               "alias": "white-circle",
-               "src": "ingame-assets/circle.png"
-            },
-            {
-               "alias": "shuffle-logo",
-               "src": "ingame-assets/shuffle.png"
-            }
-         ]
-       }
+        {
+            "name":"load-screen",
+            "assets": [
+                {
+                    "alias":"background",
+                    "src":"ingame-assets/bg.png"
+                }
+            ]
+        },
+        {
+            "name":"in-game",
+            "assets": [
+                {
+                    "alias": "white-circle",
+                    "src": "ingame-assets/circle.png"
+                },
+                {
+                    "alias": "shuffle-logo",
+                    "src": "ingame-assets/shuffle.png"
+                },
+                {
+                    "alias": "white-tile",
+                    "src": "ingame-assets/rect.png"
+                }
+            ]
+        },
+        {
+            "name": "font",
+            "assets": [
+                {
+                    "alias": "sniglet-regular",
+                    "src": "assets/Sniglet-Regular.ttf"
+                }
+            ]
+        }
     ]
  }

@@ -1,12 +1,14 @@
-import Vector2 from "../classes/Vector2";
+import Vector2 from "../classes/Mechanics/Vector2";
 
-export default interface EpisodeData 
+export default interface QuestionData 
 {
     episodeTileMapSize: Vector2;
+    words: Array<WordData>
+}
 
-    words: Array<{
-        word: string,
-        direction: "horizontal" | "vertical",
-        first_letter_location: Vector2
-    }>
+export interface WordData
+{
+    word: string;
+    direction: "horizontal" | "vertical";
+    first_letter_location: Vector2;
 }
