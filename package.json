@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve --config webpack.config.js"
+    "webpack-serve": "webpack serve --config webpack.config.js",
+    "start": "http-server ./public -p 8080"
   },
   "author": "",
   "license": "ISC",
@@ -16,7 +17,12 @@
     "playable-factory-case-study": "file:"
   },
   "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-typescript": "^7.26.0",
     "@types/gsap": "^1.20.2",
+    "babel-loader": "^9.2.1",
+    "http-server": "^14.1.1",
     "ts-loader": "^9.5.1",
     "typescript": "^5.6.3",
     "webpack": "^5.96.1",

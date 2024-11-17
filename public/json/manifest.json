@@ -23,6 +23,10 @@
                 {
                     "alias": "white-tile",
                     "src": "ingame-assets/rect.png"
+                },
+                {
+                    "alias": "tutorial-hand",
+                    "src": "ingame-assets/hand.png"
                 }
             ]
         },

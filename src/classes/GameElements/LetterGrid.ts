@@ -1,7 +1,7 @@
 import { Container, Sprite } from "pixi.js";
 import { GAME_HEIGHT, GAME_WIDTH } from "../../main";
-import Question from "../Mechanics/Question";
-import Vector2 from "../Mechanics/Vector2";
+import Question from "../Helpers/Question";
+import Vector2 from "../Helpers/Vector2";
 import GameManager from "../Managers/GameManager";
 import LetterBlock from "./LetterBlock";
 import { WordData } from "../../types/QuestionData";
@@ -15,6 +15,9 @@ export default class LetterGrid extends Container
     grid_width: number; // Yapinin genel genisligi
     tile_size: number; // Yapidaki her bir blogun dis boyutu
     inner_tile_size: number; // Yapidaki her bir blogun ic boyutu
+
+    tiles: Array<Sprite> = []; // Yapidaki her bir blogun sprite'i.
+    letter_blocks: Array<LetterBlock> = []; // Kelime olusturulduktan sonra LetterGrid uzerine gelen harfler.
 
     constructor(question: Question) 
     {
@@ -57,6 +60,7 @@ export default class LetterGrid extends Container
                 );
 
                 letter_location = letter_location.add(word.direction == "horizontal" ? new Vector2(1, 0) : new Vector2(0, 1));
+                this.letter_blocks.push(letter_block);
                 this.addChild(letter_block);
             }
         }).bind(this));
@@ -84,6 +88,7 @@ export default class LetterGrid extends Container
                 else
                     loc = loc.add(new Vector2(0, this.tile_size));
 
+                this.tiles.push(tile);
                 this.addChild(tile);
             }
         }
@@ -101,5 +106,37 @@ export default class LetterGrid extends Container
         this.subscribe_to_on_word_correct_event();
         this.place_tiles();
         this.set_pivot();
+    }
+
+    // Bolumun sonunda ve basinda oynatilan animasyon.
+    scale_animation(duration: number)
+    {
+        this.tiles.forEach(tile => {
+            gsap.to(
+                tile,
+                {
+                    pixi: {
+                        scale: 0,
+                        x: `+=${tile.width / 2}`,
+                        y: `+=${tile.height / 2}`
+                    },
+                    duration: duration
+                }
+            );
+        });
+
+        this.letter_blocks.forEach(letter_block => {
+            gsap.to(
+                letter_block,
+                {
+                    pixi: {
+                        scale: 0,
+                        x: `+=${letter_block.width / 2}`,
+                        y: `+=${letter_block.height / 2}`
+                    },
+                    duration: duration
+                }
+            );
+        });
     }
 }

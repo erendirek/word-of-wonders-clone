@@ -1,5 +1,5 @@
-import Question from "../classes/Mechanics/Question";
-import Vector2 from "../classes/Mechanics/Vector2";
+import Question from "../classes/Helpers/Question";
+import Vector2 from "../classes/Helpers/Vector2";
 
 // Icerisinde bolumleri (sorulari) bulunduran sabit liste.
 const QUESTIONS: Array<Question> = [

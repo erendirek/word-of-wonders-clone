@@ -1,4 +1,4 @@
-import Vector2 from "../classes/Mechanics/Vector2";
+import Vector2 from "../classes/Helpers/Vector2";
 
 export default interface QuestionData 
 {

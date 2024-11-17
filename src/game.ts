@@ -5,6 +5,7 @@ import LetterCircle from "./classes/GameElements/LetterCircle";
 import LetterGrid from "./classes/GameElements/LetterGrid";
 import GameManager from "./classes/Managers/GameManager";
 import LetterCreationBox from "./classes/GameElements/LetterCreationBox";
+import GameEndPanel from "./classes/GameElements/GameEndPanel";
 
 export default class Game extends Container
 {
@@ -74,6 +75,14 @@ export default class Game extends Container
         }).bind(this))
     }
 
+    // Oyun sonunda bitiris animasyonunun calismasi icin GameManager icerisindeki OnLevelEnd eventine abone olur.
+    subscribe_to_game_end_event()
+    {
+        GameManager.Instance.on_level_end.subscribe((() => {
+            this.play_game_end_animation(.2);
+        }).bind(this));
+    }
+
     // LetterCircle ve LetterGrid objelerininin konfigirasyonu
     configure_childrens()
     {
@@ -97,6 +106,7 @@ export default class Game extends Container
     {
         this.set_game_manager_event_listeners();
         this.subscribe_to_on_word_wrong_event();
+        this.subscribe_to_game_end_event();
         this.set_background();
         this.configure_childrens();
         
@@ -126,4 +136,14 @@ export default class Game extends Container
     }
 
     //#endregion
+
+    // Bolumun sonunda oynatilan animasyon.
+    play_game_end_animation(duration: number)
+    {
+        this.letter_circle.scale_animation(duration);
+        this.letter_grid.scale_animation(duration);
+        setTimeout((() => {
+            this.addChild(new GameEndPanel());
+        }).bind(this), duration * 1050);
+    }
 }

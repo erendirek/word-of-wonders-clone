@@ -11,11 +11,23 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.ts$/, // .ts dosyalarını hedefler
-        use: 'ts-loader', // TypeScript için ts-loader kullanılır
-        exclude: /node_modules/,
-      },
+        {
+          test: /\.ts$/,
+          use: [
+            {
+              loader: 'babel-loader', // Babel ile dönüştürme
+            },
+            {
+              loader: 'ts-loader', // TypeScript derleme
+            },
+          ],
+          exclude: /node_modules/,
+        },
+        {
+          test: /\.js$/, // Sadece .js dosyaları için Babel
+          use: 'babel-loader',
+          exclude: /node_modules/,
+        },
     ],
   },
   mode: 'development', // Geliştirme veya prodüksiyon modu

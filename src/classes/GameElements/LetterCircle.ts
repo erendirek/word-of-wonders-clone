@@ -1,11 +1,12 @@
 import { Container, FederatedPointerEvent, Graphics, Point, Sprite, Ticker } from "pixi.js";
 import { app, GAME_HEIGHT, GAME_WIDTH } from "../../main";
-import Vector2 from "../Mechanics/Vector2";
+import Vector2 from "../Helpers/Vector2";
 import LetterButton from "./LetterButton";
 import { shuffle } from "../../helpers/HelperFunctions";
 import { gsap } from "gsap";
-import Question from "../Mechanics/Question";
+import Question from "../Helpers/Question";
 import GameManager from "../Managers/GameManager";
+import TutorialPlayer from "./TutorialPlayer";
 
 // Kelime olusturmak icin kullanilan icerisinde harflerin bulundugu daire.
 export default class LetterCircle extends Container
@@ -15,6 +16,8 @@ export default class LetterCircle extends Container
     letter_positions: Array<Vector2> = []; // Daire icerisindeki butonlarin konumlari.
 
     line_between_word_creation_letters: Graphics = new Graphics({renderable: false}); // Kelime olustururken butonlar ve isaretci arasinda olusan cizgiyi olusturan obje.
+
+    tutorial_player: TutorialPlayer = new TutorialPlayer(this.letter_buttons); // Kelime olusturma hakkinda ipucu veren el isareti;
 
     constructor(question: Question) 
     {
@@ -121,6 +124,7 @@ export default class LetterCircle extends Container
         this.configure_line_between_word_creation_letters();
         this.create_white_circle();
         this.place_letters_to_circle();
+        this.addChild(this.tutorial_player);
 
         app.ticker.add(this.update.bind(this));
     }
@@ -170,4 +174,30 @@ export default class LetterCircle extends Container
     }
 
     //#endregion
+
+    // Bolumun sonunda ve basinda oynatilan animasyon.
+    scale_animation(duration: number)
+    {
+        gsap.to(
+            this,
+            {
+                pixi: {
+                    scale: 0
+                },
+                duration: duration
+            }
+        );
+
+        this.letter_buttons.forEach(letter_button => {
+            gsap.to(
+                letter_button,
+                {
+                    pixi: {
+                        scale: 0
+                    },
+                    duration: duration
+                }
+            );
+        });
+    }
 }

@@ -22,6 +22,7 @@ async function main()
         width: GAME_WIDTH,
         height: GAME_HEIGHT,
     });
+    document.body.appendChild(app.canvas);
 
     app.ticker.stop();
     gsap.ticker.add(()=>{
@@ -35,8 +36,6 @@ async function main()
     GameManager.start_game_manager();
 
     app.stage.addChild(new Game());
-
-    document.body.appendChild(app.canvas);
 }
 
 main();
