@@ -11,7 +11,7 @@ import TutorialPlayer from "./TutorialPlayer";
 // Kelime olusturmak icin kullanilan icerisinde harflerin bulundugu daire.
 export default class LetterCircle extends Container
 {
-    letters: Set<string>; // Daire icerisindeki harfler.
+    letters: Array<string>; // Daire icerisindeki harfler.
     letter_buttons: Array<LetterButton> = []; // Daire icerisindeki harflerin etkilesimi icin olusturulan butonlar.
     letter_positions: Array<Vector2> = []; // Daire icerisindeki butonlarin konumlari.
 
@@ -61,7 +61,7 @@ export default class LetterCircle extends Container
     // Vector2 sinifinin rotate fonksiyonu burda kullaniliyor.
     place_letters_to_circle()
     {
-        const step_angle = 2 * Math.PI / this.letters.size;
+        const step_angle = 2 * Math.PI / this.letters.length;
         const up = new Vector2(0, 1);
         this.letters.forEach((letter) => {
             let vec = up.mul(85);

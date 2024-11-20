@@ -11,7 +11,7 @@ export default class GameManager
 {
     static Instance: GameManager;
     
-    current_question: Question = QUESTIONS[0]; // Halihazirda oynanan soruyu barindiran Question objesi.
+    current_question: Question = QUESTIONS[2]; // Halihazirda oynanan soruyu barindiran Question objesi.
 
     // Oyun durumunu kontrol eden degiskenler
     in_shuffle: boolean = false; // LetterCircle harfleri karistirma islemi yaparken harfleri kullanmayi engeller.

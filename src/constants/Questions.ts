@@ -52,6 +52,41 @@ const QUESTIONS: Array<Question> = [
                 first_letter_location: new Vector2(2,2)
             }
         ]
+    }),
+    new Question({
+        episodeTileMapSize: new Vector2(8, 7),
+        words: [
+            {
+                word: "CARROT",
+                direction: "horizontal",
+                first_letter_location: new Vector2(0, 3)
+            },
+            {
+                word: "CART",
+                direction: "horizontal",
+                first_letter_location: new Vector2(4, 1)
+            },
+            {
+                word: "ROAR",
+                direction: "vertical",
+                first_letter_location: new Vector2(2, 0)
+            },
+            {
+                word: "COAT",
+                direction: "vertical",
+                first_letter_location: new Vector2(0, 3)
+            },
+            {
+                word: "ACTOR",
+                direction: "vertical",
+                first_letter_location: new Vector2(5, 1)
+            },
+            {
+                word: "TACO",
+                direction: "vertical",
+                first_letter_location: new Vector2(7, 1)
+            }
+        ]
     })
 ]
 
